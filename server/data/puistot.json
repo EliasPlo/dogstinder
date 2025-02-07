@@ -1,0 +1,22 @@
+[
+    {
+        "lat": 60.1699,
+        "lng": 24.9384,
+        "name": "Esplanadin puisto"
+    },
+    {
+        "lat": 60.201,
+        "lng": 24.9344,
+        "name": "Lauttasaaren koirapuisto"
+    },
+    {
+        "lat": 60.1872,
+        "lng": 24.828,
+        "name": "Munkkivuoren koirapuisto"
+    },
+    {
+        "name": "testi1",
+        "lat": 50,
+        "lng": 50
+    }
+]

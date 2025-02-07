@@ -1,0 +1,17 @@
+[
+    {
+        "lat": 60.1695,
+        "lng": 24.9327,
+        "name": "Helsingin eläinsairaala"
+    },
+    {
+        "lat": 60.2055,
+        "lng": 24.7565,
+        "name": "Espoon eläinklinikka"
+    },
+    {
+        "lat": 60.2237,
+        "lng": 25.0933,
+        "name": "Vantaan eläinlääkäriasema"
+    }
+]

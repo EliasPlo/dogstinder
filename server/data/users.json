@@ -1,0 +1,32 @@
+[
+  {
+    "username": "adminuser",
+    "password": "pass",
+    "role": "admin"
+  },
+  {
+    "username": "normaluser",
+    "password": "pass",
+    "role": "user"
+  },
+  {
+    "username": "eventorganizer",
+    "password": "pass",
+    "role": "eventuser"
+  },
+  {
+    "username": "userone",
+    "password": "pass",
+    "role": "user"
+  },
+  {
+    "username": "usertwo",
+    "password": "pass",
+    "role": "user"
+  },
+  {
+    "username": "user0",
+    "password": "$2a$10$E0XlKihyT7CGNUnJIPIIg.OfgykqRedJEeRLY5x/d5Vl4fU3ccn6S",
+    "role": "admin"
+  }
+]
