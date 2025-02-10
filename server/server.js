@@ -12,10 +12,8 @@ app.use(cors({
   origin: 'http://localhost:3000'
 }));
 app.use(bodyParser.json());
-
 const DATA_FOLDER = path.join(__dirname, "data");
 
-// Lataa karttamerkinnät
 app.get("/api/markers/:type", (req, res) => {
     const type = req.params.type;
     const filePath = path.join(DATA_FOLDER, `${type}.json`);
@@ -28,7 +26,6 @@ app.get("/api/markers/:type", (req, res) => {
     res.json(JSON.parse(data));
 });
 
-// Tallenna uusi merkintä
 app.post("/api/markers/:type", (req, res) => {
     const type = req.params.type;
     const filePath = path.join(DATA_FOLDER, `${type}.json`);
@@ -52,35 +49,25 @@ function loadUsers() {
   return JSON.parse(data);
 }
 
-// Tallenna käyttäjätiedot takaisin JSON-tiedostoon
 function saveUsers(users) {
   fs.writeFileSync('./data/users.json', JSON.stringify(users, null, 2));
 }
 
-// Rekisteröinti (käyttäjä, eventuser, admin)
 app.post('/register', (req, res) => {
   const { username, password, role } = req.body;
 
-  // Tarkistetaan rooli
   if (!['user', 'eventuser', 'admin'].includes(role)) {
       return res.status(400).json({ message: 'Invalid role' });
   }
 
-  // Tarkistetaan onko käyttäjä jo olemassa
   const users = loadUsers();
   const existingUser = users.find(u => u.username === username);
   if (existingUser) {
       return res.status(400).json({ message: 'User already exists' });
   }
-
-  // Salataan salasana
   const hashedPassword = bcrypt.hashSync(password, 10);
-
-  // Luodaan uusi käyttäjä
   const newUser = { username, password: hashedPassword, role };
   users.push(newUser);
-
-  // Tallennetaan uusi käyttäjä
   saveUsers(users);
 
   res.status(201).json({ message: 'User registered successfully' });
@@ -89,26 +76,20 @@ app.post('/register', (req, res) => {
 // Kirjautuminen
 app.post('/login', (req, res) => {
   const { username, password } = req.body;
-
   const users = loadUsers();
   const user = users.find(u => u.username === username);
 
   if (!user) {
       return res.status(400).json({ message: 'User not found' });
   }
-
-  // Vertaillaan salasanoja
   if (!bcrypt.compareSync(password, user.password)) {
       return res.status(400).json({ message: 'Incorrect password' });
   }
-
-  // Luodaan JWT-tunnus
   const token = jwt.sign({ username: user.username, role: user.role }, 'secretKey', { expiresIn: '1h' });
 
   res.json({ message: 'Login successful', token });
 });
 
-// Suojattu reitti, joka vaatii admin-oikeudet
 app.get('/admin', (req, res) => {
   const token = req.headers['authorization'];
   if (!token) return res.status(403).json({ message: 'No token provided' });
@@ -124,18 +105,14 @@ app.get('/admin', (req, res) => {
   });
 });
 
-// Suojattu reitti, joka vaatii eventuser-oikeudet
 app.get('/eventuser', (req, res) => {
   const token = req.headers['authorization'];
   if (!token) return res.status(403).json({ message: 'No token provided' });
-
   jwt.verify(token, 'secretKey', (err, decoded) => {
       if (err) return res.status(500).json({ message: 'Failed to authenticate token' });
-
       if (decoded.role !== 'eventuser') {
           return res.status(403).json({ message: 'Access denied' });
       }
-
       res.json({ message: 'Welcome, EventUser!' });
   });
 });

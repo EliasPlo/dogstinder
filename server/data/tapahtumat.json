@@ -2,21 +2,41 @@
   {
     "lat": 60.1708,
     "lng": 24.9375,
-    "name": "Koirien yhteislenkki"
+    "name": "Koirien yhteislenkki",
+    "description": "esimerkki1",
+    "date": "2025-02-15T12:00:00.594Z"
   },
   {
     "lat": 60.192,
     "lng": 24.9458,
-    "name": "Koirapuistojuhla"
+    "name": "Koirapuistojuhla",
+    "description": "esimerkki3",
+    "date": "2025-02-22T09:00:00.594Z"
   },
   {
     "lat": 60.165,
     "lng": 24.921,
-    "name": "Koiran koulutuskurssi"
+    "name": "Koiran koulutuskurssi",
+    "description": "esimerkki2",
+    "date": "2025-02-18T07:00:00.594Z"
   },
   {
     "lat": 60.179748660185034,
     "lng": 24.990570545196537,
-    "name": "dafaf"
+    "name": "dafaf",
+    "description": "dafaf",
+    "date": "2025-02-25T19:00:00.594Z"
+  },
+  {
+    "lat": 60.19675300921148,
+    "lng": 24.927978515625004,
+    "name": "esimerkki"
+  },
+
+  {
+    "name": "egef",
+    "lat": 60.2708,
+    "lng": 24.8375,
+    "id": "937c1af8-900a-478e-8870-16c1ed5ef19f"
   }
 ]

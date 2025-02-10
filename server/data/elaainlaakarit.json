@@ -2,16 +2,22 @@
     {
         "lat": 60.1695,
         "lng": 24.9327,
-        "name": "Helsingin eläinsairaala"
+        "name": "Helsingin eläinsairaala",
+        "description": "esimerkki2",
+        "date": "2025-02-18T07:00:00.594Z"
     },
     {
         "lat": 60.2055,
         "lng": 24.7565,
-        "name": "Espoon eläinklinikka"
+        "name": "Espoon eläinklinikka",
+        "description": "esimerkki2",
+        "date": "2025-02-18T07:00:00.594Z"
     },
     {
         "lat": 60.2237,
         "lng": 25.0933,
-        "name": "Vantaan eläinlääkäriasema"
+        "name": "Vantaan eläinlääkäriasema",
+        "description": "esimerkki2",
+        "date": "2025-02-18T07:00:00.594Z"
     }
 ]

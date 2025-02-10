@@ -32,11 +32,7 @@ router.delete("/deleteMarker/:type/:markerId", (req, res) => {
     }
 
     let data = JSON.parse(fs.readFileSync(filePath));
-
-    // Poistetaan merkintä ID:n perusteella
     const updatedData = data.filter((marker) => marker.id !== markerId);
-
-    // Tallennetaan päivitetyt tiedot
     fs.writeFileSync(filePath, JSON.stringify(updatedData, null, 4));
 
     res.json({ success: true, message: "Merkintä poistettu!" });

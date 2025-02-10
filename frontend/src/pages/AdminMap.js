@@ -22,13 +22,15 @@ const MapView = ({ type }) => {
         });
     }, [type]);
 
-/*const MapClickHandler = ({ type, setMarkers }) => {
+const MapClickHandler = ({ type, setMarkers }) => {
     useMapEvents({
         click: (e) => {
             const newMarker = {
                 lat: e.latlng.lat,
                 lng: e.latlng.lng,
-                name: prompt("Anna merkinnän nimi:")
+                name: prompt("Anna merkinnän nimi:"),
+                description: prompt("Anna merkinnän kuvaus:"),
+                date: prompt("Anna merkinnän päiväys:") 
             };
 
             axios.post(`http://localhost:5000/api/markers/${type}`, newMarker).then(() => {
@@ -37,7 +39,7 @@ const MapView = ({ type }) => {
         }
     });
     return null;
-};*/
+};
 
     return (
         <MapContainer center={[60.1699, 24.9384]} zoom={12} style={{ height: "100vh", width: "100%" }}>
@@ -51,6 +53,7 @@ const MapView = ({ type }) => {
                     </Popup>
                 </Marker>
             ))}
+            <MapClickHandler type={type} setMarkers={setMarkers} />
         </MapContainer>
     );
 };

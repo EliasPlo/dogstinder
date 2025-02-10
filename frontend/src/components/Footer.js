@@ -46,6 +46,7 @@ const Footer = () => {
             <a href="http://localhost:3000/events">Tapahtumat</a>
             <a href="http://localhost:3000/settings">Asetukset</a>
             <a href="http://localhost:3000/profile">Profiili</a>
+            <a href="http://localhost:3000/admin">Admin</a>
         </ul>
       <p>&copy; 2025 Koira.png - All Rights Reserved</p>
     </Navbar>

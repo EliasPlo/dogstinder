@@ -10,6 +10,9 @@ import AdminPanel from './components/AdminPanel';
 import Home from './pages/Home';
 import MapView from './pages/MapView';
 import Events from './pages/Events';
+import AdminPage from './pages/AdminPage'
+import AdminMap from './pages/AdminMap';
+import AdminM from './pages/AdminM'
 import Settings from './pages/Settings';
 import UserProfile from './pages/UserProfile';
 import Login from './pages/Login';
@@ -34,7 +37,12 @@ const App = () => {
           <Route path="/profile" element={<UserProfile />} />
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<Signup />} />
-          <Route path='/admin' element={<AdminPanel />} />
+          <Route path='/admin' element={<AdminPage />} />
+          <Route path='/admin/add' element={<AdminPanel />} />
+          <Route path='/admin/maps' element={<AdminM />} />
+          <Route path="/admin/map/parks" element={<AdminMap type="puistot" />} />
+          <Route path="/admin/map/vets" element={<AdminMap type="elaainlaakarit"/>} />
+          <Route path="/admin/map/events" element={<AdminMap type="tapahtumat"/>} />
         </Routes>
 
         {/* Alatunniste */}

@@ -1,22 +1,37 @@
 [
-    {
-        "lat": 60.1699,
-        "lng": 24.9384,
-        "name": "Esplanadin puisto"
-    },
-    {
-        "lat": 60.201,
-        "lng": 24.9344,
-        "name": "Lauttasaaren koirapuisto"
-    },
-    {
-        "lat": 60.1872,
-        "lng": 24.828,
-        "name": "Munkkivuoren koirapuisto"
-    },
-    {
-        "name": "testi1",
-        "lat": 50,
-        "lng": 50
-    }
+  {
+    "lat": 60.1699,
+    "lng": 24.9384,
+    "name": "Esplanadin puisto",
+    "description": "esimerkki2",
+    "date": "2025-02-18T07:00:00.594Z"
+  },
+  {
+    "lat": 60.201,
+    "lng": 24.9344,
+    "name": "Lauttasaaren koirapuisto",
+    "description": "esimerkki2",
+    "date": "2025-02-18T07:00:00.594Z"
+  },
+  {
+    "lat": 60.1872,
+    "lng": 24.828,
+    "name": "Munkkivuoren koirapuisto",
+    "description": "esimerkki2",
+    "date": "2025-02-18T07:00:00.594Z"
+  },
+  {
+    "name": "testi1",
+    "lat": 50,
+    "lng": 50,
+    "description": "esimerkki2",
+    "date": "2025-02-18T07:00:00.594Z"
+  },
+  {
+    "lat": 60.21816126170426,
+    "lng": 24.838714599609375,
+    "name": "testi",
+    "description": "testi kuvays",
+    "date": "12.2.2025"
+  }
 ]
