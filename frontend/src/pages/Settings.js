@@ -1,10 +1,10 @@
-// src/components/Settings.js
 import React, { useState } from 'react';
 import axios from 'axios';
 
 const Settings = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+  const [privacy, setPrivacy] = useState('public'); // Default to 'public'
   const [error, setError] = useState(null);
 
   const handleSubmit = async (e) => {
@@ -19,7 +19,7 @@ const Settings = () => {
     try {
       await axios.put(
         '/api/user/profile', // You may need to implement this PUT endpoint
-        { username, password },
+        { username, password, privacy }, // Include privacy setting in the payload
         { headers: { Authorization: `Bearer ${token}` } }
       );
       alert('Profile updated');
@@ -33,8 +33,7 @@ const Settings = () => {
       <h2>Settings</h2>
       {error && <p>{error}</p>}
       <form onSubmit={handleSubmit}>
-        <input
-          type="text"
+        <input          type="text"
           placeholder="New Username"
           value={username}
           onChange={(e) => setUsername(e.target.value)}
@@ -45,6 +44,14 @@ const Settings = () => {
           value={password}
           onChange={(e) => setPassword(e.target.value)}
         />
+        
+        {/* Privacy setting dropdown */}
+        <select value={privacy} onChange={(e) => setPrivacy(e.target.value)}>
+          <option value="public">Public</option>
+          <option value="private">Private</option>
+          <option value="friends">Friends Only</option>
+        </select>
+        
         <button type="submit">Update</button>
       </form>
     </div>

@@ -1,0 +1,11 @@
+user profile
+näkyy käyttäjänimi
+
+tee admin edit
+- lista käyttäjistä
+- voi listää poistaa muokata
+-
+
+
+
+kova koodatutu tunnukset admin page.js 

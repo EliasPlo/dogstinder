@@ -1,19 +1,31 @@
 import React, { useState } from 'react';
-import { register } from '../services/api';
+import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+
+const API_URL = 'http://localhost:5000'; // Muuta tarvittaessa backendin osoitteen mukaan
 
 const Signup = () => {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const [role, setRole] = useState('user');
     const [error, setError] = useState('');
-    const history = useNavigate();
+    const navigate = useNavigate();
+
+    const register = async (username, password, role) => {
+        try {
+            const response = await axios.post(`${API_URL}/register`, { username, password, role });
+            return response.data;
+        } catch (error) {
+            console.error('Error registering user:', error.response?.data || error);
+            throw error;
+        }
+    };
 
     const handleSignup = async (e) => {
         e.preventDefault();
         try {
             await register(username, password, role);
-            history.push('/login'); // Ohjataan kirjautumissivulle rekisteröinnin jälkeen
+            navigate('/login'); // Ohjataan kirjautumissivulle rekisteröinnin jälkeen
         } catch (err) {
             setError('Error during registration');
         }
@@ -52,6 +64,7 @@ const Signup = () => {
                     </select>
                 </div>
                 <button type="submit">Sign Up</button>
+                <p>Onko sinulla jo käyttäjä? <a href='/login'>Kirjaudu sisään</a></p>
             </form>
         </div>
     );

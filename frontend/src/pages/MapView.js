@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
-import { useMapEvents } from "react-leaflet";
 import 'leaflet/dist/leaflet.css';
 import L from 'leaflet';
 import axios from "axios";
@@ -22,36 +21,24 @@ const MapView = ({ type }) => {
         });
     }, [type]);
 
-/*const MapClickHandler = ({ type, setMarkers }) => {
-    useMapEvents({
-        click: (e) => {
-            const newMarker = {
-                lat: e.latlng.lat,
-                lng: e.latlng.lng,
-                name: prompt("Anna merkinnän nimi:")
-            };
-
-            axios.post(`http://localhost:5000/api/markers/${type}`, newMarker).then(() => {
-                setMarkers((prev) => [...prev, newMarker]);
-            });
-        }
-    });
-    return null;
-};*/
-
     return (
-        <MapContainer center={[60.1699, 24.9384]} zoom={12} style={{ height: "100vh", width: "100%" }}>
+        <div>
+            <div>
+                <a href="/maps">Takaisin</a>
+            </div>
+        <MapContainer center={[60.1699, 24.9384]} zoom={12} style={{ height: "1000px", width: "90%" }}>
             <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
             {markers.map((marker, index) => (
                 <Marker key={index} position={[marker.lat, marker.lng]}>
                     <Popup>
-                        <p>{marker.name}</p>
+                        <strong>{marker.name}</strong>
                         <p>{marker.description}</p>
                         <p>{marker.date}</p>
                     </Popup>
                 </Marker>
             ))}
         </MapContainer>
+        </div>
     );
 };
 

@@ -41,12 +41,12 @@ const Footer = () => {
   return (
     <Navbar>
         <ul>
-            <a href="http://localhost:3000/">Koti</a>
-            <a href="http://localhost:3000/parks">PuistoKartta</a>
-            <a href="http://localhost:3000/events">Tapahtumat</a>
-            <a href="http://localhost:3000/settings">Asetukset</a>
-            <a href="http://localhost:3000/profile">Profiili</a>
-            <a href="http://localhost:3000/admin">Admin</a>
+            <a href="/">Koti</a>
+            <a href="/parks">PuistoKartta</a>
+            <a href="/events">Tapahtumat</a>
+            <a href="/settings">Asetukset</a>
+            <a href="/profile">Profiili</a>
+            <a href="/admin/auth">Admin</a>
         </ul>
       <p>&copy; 2025 Koira.png - All Rights Reserved</p>
     </Navbar>
