@@ -1,6 +1,6 @@
-// src/components/Events.js
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import { Container, Typography, Card, CardContent, List, ListItem, Alert } from '@mui/material';
 
 const Events = () => {
   const [events, setEvents] = useState([]);
@@ -19,25 +19,34 @@ const Events = () => {
     fetchEvents();
   }, []);
 
-  if (error) return <p>{error}</p>;
-
   return (
-    <div>
-      <h2>Events</h2>
+    <Container>
+      <br />
+      <Typography variant="h4" gutterBottom>
+        Events
+      </Typography>
+      {error && <Alert severity="error">{error}</Alert>}
       {events.length > 0 ? (
-        <ul>
+        <List>
           {events.map((event) => (
-            <li key={event._id}>
-              <h3>{event.name}</h3>
-              <p>{event.description}</p>
-              <p>{new Date(event.date).toLocaleString()}</p>
-            </li>
+            <ListItem key={event._id} sx={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start' }}>
+              <Card sx={{ width: '100%', marginBottom: 2 }}>
+                <CardContent>
+                  <Typography variant="h5">{event.name}</Typography>
+                  <Typography variant="body1">{event.description}</Typography>
+                  <Typography variant="body2" color="textSecondary">
+                    {new Date(event.date).toLocaleString()}
+                  </Typography>
+                </CardContent>
+              </Card>
+            </ListItem>
           ))}
-        </ul>
+        </List>
       ) : (
-        <p>No events found</p>
+        <Typography>No events found</Typography>
       )}
-    </div>
+      <br />
+    </Container>
   );
 };
 

@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import { TextField, Button, Typography, Container, Box, MenuItem, Select, InputLabel, FormControl } from '@mui/material';
 
-const API_URL = 'http://localhost:5000'; // Muuta tarvittaessa backendin osoitteen mukaan
+const API_URL = 'http://localhost:5000'; // Update with your backend URL
 
 const Signup = () => {
     const [username, setUsername] = useState('');
@@ -25,48 +26,43 @@ const Signup = () => {
         e.preventDefault();
         try {
             await register(username, password, role);
-            navigate('/login'); // Ohjataan kirjautumissivulle rekisteröinnin jälkeen
+            navigate('/login'); // Redirect to login after successful registration
         } catch (err) {
             setError('Error during registration');
         }
     };
 
     return (
-        <div>
-            <h2>Sign Up</h2>
-            {error && <p style={{ color: 'red' }}>{error}</p>}
-            <form onSubmit={handleSignup}>
-                <div>
-                    <label>Username</label>
-                    <input
-                        type="text"
-                        value={username}
-                        onChange={(e) => setUsername(e.target.value)}
-                    />
-                </div>
-                <div>
-                    <label>Password</label>
-                    <input
-                        type="password"
-                        value={password}
-                        onChange={(e) => setPassword(e.target.value)}
-                    />
-                </div>
-                <div>
-                    <label>Role</label>
-                    <select
-                        value={role}
-                        onChange={(e) => setRole(e.target.value)}
-                    >
-                        <option value="user">User</option>
-                        <option value="eventuser">Event User</option>
-                        <option value="admin">Admin</option>
-                    </select>
-                </div>
-                <button type="submit">Sign Up</button>
-                <p>Onko sinulla jo käyttäjä? <a href='/login'>Kirjaudu sisään</a></p>
-            </form>
-        </div>
+        <Container component="main" maxWidth="xs">
+            <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', marginTop: 8, padding: 3, backgroundColor: 'background.paper', borderRadius: 1, boxShadow: 3}}>
+                <Typography variant="h5" gutterBottom>
+                    Sign Up
+                </Typography>
+                {error && (
+                    <Typography variant="body2" color="error" sx={{ marginBottom: 2 }}>
+                        {error}
+                    </Typography>
+                )}
+                <form onSubmit={handleSignup} style={{ width: '100%' }}>
+                    <TextField label="Username" variant="outlined" fullWidth margin="normal" value={username} onChange={(e) => setUsername(e.target.value)}/>
+                    <TextField label="Password" variant="outlined" type="password" fullWidth margin="normal" value={password} onChange={(e) => setPassword(e.target.value)}/>
+                    <FormControl fullWidth margin="normal">
+                        <InputLabel>Role</InputLabel>
+                        <Select value={role} onChange={(e) => setRole(e.target.value)} label="Role">
+                            <MenuItem value="user">User</MenuItem>
+                            <MenuItem value="eventuser">Event User</MenuItem>
+                            <MenuItem value="admin">Admin</MenuItem>
+                        </Select>
+                    </FormControl>
+                    <Button type="submit" variant="contained" color="primary" fullWidth sx={{ marginTop: 2 }}>
+                        Sign Up
+                    </Button>
+                    <Typography variant="body2" align="center" sx={{ marginTop: 2 }}>
+                        Onko sinulla jo käyttäjä? <a href='/login'>Kirjaudu sisään</a>
+                    </Typography>
+                </form>
+            </Box>
+        </Container>
     );
 };
 

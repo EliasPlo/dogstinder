@@ -1,0 +1,38 @@
+[
+  {
+    "username": "anna123",
+    "dogName": "koira1",
+    "breed": "Saksanpaimenkoira",
+    "age": 5
+  },
+  {
+    "username": "matti456",
+    "dogName": "koiraa",
+    "breed": "Labradorinnoutaja",
+    "age": 3
+  },
+  {
+    "username": "liisa789",
+    "dogName": "dog",
+    "breed": "rotu2",
+    "age": 2
+  },
+  {
+    "username": "marko321",
+    "dogName": "matti",
+    "breed": "Kultainennoutaja",
+    "age": 4
+  },
+  {
+    "username": "tina654",
+    "dogName": "koir10",
+    "breed": "rotu3",
+    "age": 1
+  },
+  {
+    "username": "admim",
+    "dogName": "koira",
+    "breed": "rotu1",
+    "age": "12"
+  }
+]

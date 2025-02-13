@@ -1,56 +1,29 @@
 import React from 'react';
-import styled from 'styled-components';
-const Navbar = styled.nav`
-  background-color: #333;
-  color: white;
-  padding: 15px 20px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+import { AppBar, Toolbar, Typography, Button, Box } from '@mui/material';
+import { Link } from 'react-router-dom';
 
-  ul {
-    list-style: none;
-    display: flex;
-    gap: 20px;
-    margin: 0;
-    padding: 0;
-  }
-
-  li {
-    font-size: 16px;
-  }
-
-  a {
-    text-decoration: none;
-    color: white;
-    transition: color 0.3s;
-
-    &:hover {
-      color: #00bcd4;
-    }
-  }
-
-  .logo {
-    font-size: 1.5em;
-    font-weight: bold;
-    width: 20%;
-  }
-`;
-
-const Footer = () => {
+const Navbar = () => {
   return (
-    <Navbar>
-        <ul>
-            <a href="/">Koti</a>
-            <a href="/parks">PuistoKartta</a>
-            <a href="/events">Tapahtumat</a>
-            <a href="/settings">Asetukset</a>
-            <a href="/profile">Profiili</a>
-            <a href="/admin/auth">Admin</a>
-        </ul>
-      <p>&copy; 2025 Koira.png - All Rights Reserved</p>
-    </Navbar>
+    <AppBar position="static" sx={{ backgroundColor: '#333' }}>
+      <Toolbar sx={{ display: 'flex', justifyContent: 'space-between' }}>
+        <Typography variant="h6" sx={{ fontWeight: 'bold' }}>
+          Koira.png
+        </Typography>
+        <Box sx={{ display: 'flex', gap: 2 }}>
+          <Button color="inherit" component={Link} to="/">Koti</Button>
+          <Button color="inherit" component={Link} to="/maps">Kartat</Button>
+          <Button color="inherit" component={Link} to="/events">Tapahtumat</Button>
+          <Button color='inherit' component={Link} to="/dogs/list">KoiraLista</Button>
+          <Button color="inherit" component={Link} to="/profile">Profiili</Button>
+          <Button color="inherit" component={Link} to="/settings">Asetukset</Button>
+          <Button color="inherit" component={Link} to="/admin/auth">Admin</Button>
+        </Box>
+      </Toolbar>
+      <Typography variant="body2" align="center" sx={{ padding: 2, backgroundColor: '#222' }}>
+        &copy; 2025 Koira.png - All Rights Reserved
+      </Typography>
+    </AppBar>
   );
 };
 
-export default Footer;
+export default Navbar;

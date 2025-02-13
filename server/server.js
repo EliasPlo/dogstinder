@@ -58,6 +58,50 @@ app.get("/api/users", (req, res) => {
   });
 });
 
+app.post('/add-dog', (req, res) => {
+    const { username, dogName, breed, age } = req.body;
+
+    // Lue nykyiset koirat tiedostosta
+    fs.readFile('./data/dogs.json', 'utf-8', (err, data) => {
+        if (err) {
+            return res.status(500).json({ message: 'Virhe tiedoston lukemisessa.' });
+        }
+
+        let dogs = [];
+        if (data) {
+            dogs = JSON.parse(data);
+        }
+
+        // Luo uusi koira ja lisää se listaan
+        const newDog = {
+            username,
+            dogName,
+            breed,
+            age,
+        };
+
+        dogs.push(newDog);
+
+        // Tallenna päivitetty lista tiedostoon
+        fs.writeFile('./data/dogs.json', JSON.stringify(dogs, null, 2), (err) => {
+            if (err) {
+                return res.status(500).json({ message: 'Virhe tiedostoon kirjoittamisessa.' });
+            }
+            res.status(200).json({ message: 'Koiran lisäys onnistui!' });
+        });
+    });
+});
+
+app.get('/dogs', (req, res) => {
+    fs.readFile('./data/dogs.json', 'utf-8', (err, data) => {
+        if (err) {
+            return res.status(500).json({ message: 'Virhe tiedoston lukemisessa.' });
+        }
+        const dogs = JSON.parse(data);
+        res.status(200).json(dogs);
+    });
+});
+
 app.use("/api/admin", adminRoutes);
 
 function loadUsers() {

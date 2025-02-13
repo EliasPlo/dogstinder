@@ -5,13 +5,13 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 // Komponentit
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
-import AdminPanel from './components/AdminPanel';
 // Sivut
 import Home from './pages/Home';
 import MapView from './pages/MapView';
 import Maps from './pages/Maps'
 import Events from './pages/Events';
 import AdminPage from './pages/AdminPage'
+import AdminPanel from './pages/AdminPanel';
 import AdminMap from './pages/AdminMap';
 import AdminM from './pages/AdminM'
 import AdminEdit from './pages/AdminEdit'
@@ -20,6 +20,8 @@ import UserProfile from './pages/UserProfile';
 import UserInfo from './pages/UserInfo';
 import Login from './pages/Login';
 import Signup from './pages/Signup';
+import DogAdd from './pages/DogAdd';
+import DogList from './pages/DogList'
 
 // App-komponentti
 const App = () => {
@@ -49,6 +51,8 @@ const App = () => {
           <Route path="/admin/map/parks" element={<AdminMap type="puistot" />} />
           <Route path="/admin/map/vets" element={<AdminMap type="elaainlaakarit"/>} />
           <Route path="/admin/map/events" element={<AdminMap type="tapahtumat"/>} />
+          <Route path='/dogs/add' element={<DogAdd />} />
+          <Route path='/dogs/list' element={<DogList />} />
         </Routes>
 
         {/* Alatunniste */}

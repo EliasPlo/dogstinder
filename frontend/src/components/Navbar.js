@@ -1,18 +1,22 @@
-import React, { useState } from 'react';
+import React from 'react';
+import { AppBar, Toolbar, Typography, Button } from '@mui/material';
 import { Link } from 'react-router-dom';
-import '../assets/Navbar.css';
 
 const Navbar = () => {
   return (
-    <nav className="navbar">
-      <ul className="nav-list">
-        <li><Link to="/">Home</Link></li>
-        <li><Link to="/maps">Kartat</Link></li>
-        <li><Link to="/events">Tapahtumat</Link></li>
-        <li><Link to="/profile">Profiili</Link></li>
-        <li><Link to="/settings">Asetukset</Link></li>
-      </ul>
-    </nav>
+    <AppBar position="static" sx={{ backgroundColor: '#3D8D7A' }}>
+      <Toolbar>
+        <Typography variant="h6" sx={{ flexGrow: 1 }}>
+          Koira.png
+        </Typography>
+        <Button color="inherit" component={Link} to="/">Home</Button>
+        <Button color="inherit" component={Link} to="/maps">Kartat</Button>
+        <Button color="inherit" component={Link} to="/events">Tapahtumat</Button>
+        <Button color="inherit" component={Link} to="/dogs/list">KoiraLista</Button>
+        <Button color="inherit" component={Link} to="/profile">Profiili</Button>
+        <Button color="inherit" component={Link} to="/settings">Asetukset</Button>
+      </Toolbar>
+    </AppBar>
   );
 };
 

@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
+import { Container, Button, Typography } from "@mui/material";
 import 'leaflet/dist/leaflet.css';
 import L from 'leaflet';
 import axios from "axios";
+import { Link } from "react-router-dom";
 
 delete L.Icon.Default.prototype._getIconUrl;
 
@@ -22,23 +24,23 @@ const MapView = ({ type }) => {
     }, [type]);
 
     return (
-        <div>
-            <div>
-                <a href="/maps">Takaisin</a>
-            </div>
-        <MapContainer center={[60.1699, 24.9384]} zoom={12} style={{ height: "1000px", width: "90%" }}>
+        <Container sx={{ textAlign: "left", mt: 3 }}>
+            <Button variant="contained" component={Link} to="/maps" sx={{ mb: 1 }}>
+                Takaisin
+            </Button>
+        <MapContainer center={[60.1699, 24.9384]} zoom={12} style={{ height: "1000px", width: "100%" }}>
             <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
             {markers.map((marker, index) => (
                 <Marker key={index} position={[marker.lat, marker.lng]}>
-                    <Popup>
-                        <strong>{marker.name}</strong>
-                        <p>{marker.description}</p>
-                        <p>{marker.date}</p>
-                    </Popup>
+                        <Popup>
+                            <Typography variant="h6">{marker.name}</Typography>
+                            <Typography variant="body2">{marker.description}</Typography>
+                            <Typography variant="caption" color="textSecondary">{marker.date}</Typography>
+                        </Popup>
                 </Marker>
             ))}
         </MapContainer>
-        </div>
+        </Container>
     );
 };
 
